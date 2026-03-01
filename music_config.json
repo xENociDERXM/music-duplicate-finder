@@ -1,0 +1,75 @@
+{
+  "_comment": "Music Duplicate Finder - Configuration File",
+  "_comment2": "Edit the values below. Do not remove any keys.",
+
+  "folders": {
+    "organized":      "C:\\Music\\Organized",
+    "unsorted":       "C:\\Music\\Unsorted",
+    "duplicates":     "C:\\Music\\Duplicates",
+    "better_quality": "C:\\Music\\BetterQuality"
+  },
+
+  "matching": {
+    "_comment": "mode: 1=filename only, 2=metadata only, 3=either, 4=both (recommended)",
+    "mode": "4",
+
+    "_comment2": "fuzzy_enabled: use fuzzy matching for artist/album/title (catches slight tag differences)",
+    "fuzzy_enabled": true,
+
+    "_comment3": "fuzzy_threshold: 0-100. 100 = exact only. 85-90 recommended.",
+    "fuzzy_threshold": 88,
+
+    "_comment4": "use_duration: include track duration in matching to reduce false positives",
+    "use_duration": true,
+
+    "_comment5": "duration_tolerance_seconds: how many seconds apart two tracks can be and still match",
+    "duration_tolerance_seconds": 2,
+
+    "_comment6": "exact_match_size_tolerance_percent: max file size difference (%) for auto-move as exact match.",
+    "_comment6b": "Files at the same bitrate differ in size only due to embedded tags/artwork - not audio.",
+    "_comment6c": "3.0% catches nearly all such cases safely. 0 = byte-for-byte exact only.",
+    "exact_match_size_tolerance_percent": 3.0
+  },
+
+  "performance": {
+    "_comment": "max_threads: number of parallel threads for scanning. 4-8 recommended. 0 = auto (CPU count)",
+    "max_threads": 0,
+
+    "_comment2": "cache_enabled: cache organized folder scan to speed up future runs",
+    "cache_enabled": true,
+
+    "_comment3": "cache_file: where to store the metadata cache.",
+    "cache_file": "music_cache.json"
+  },
+
+  "resume": {
+    "_comment": "If the script is interrupted, it can resume from where it left off.",
+    "enabled": true,
+    "resume_file": "music_resume.json"
+  },
+
+  "output": {
+    "_comment": "Where logs and CSV reports are saved. Leave blank to use the duplicates folder.",
+    "log_folder": ""
+  },
+
+  "acoustid": {
+    "_comment": "Audio fingerprint matching using Chromaprint (fpcalc).",
+    "_comment2": "Catches duplicates with different filenames or tags (renamed / retagged files).",
+    "_comment3": "No API key required - fingerprints are compared locally.",
+    "_comment4": "Download fpcalc from https://acoustid.org/chromaprint and add it to your PATH.",
+
+    "_comment5": "enabled: set to true to be offered fingerprint matching at each run startup.",
+    "enabled": false,
+
+    "_comment6": "fpcalc_path: path to the fpcalc executable. 'fpcalc' works if it is in your PATH.",
+    "fpcalc_path": "fpcalc",
+
+    "_comment7": "similarity_threshold: 0-100. How similar fingerprints must be to count as a match.",
+    "_comment7b": "85 is recommended. Lower = more matches but more false positives.",
+    "similarity_threshold": 85,
+
+    "_comment8": "fp_cache_file: where to cache fingerprints. Avoids re-reading audio on future runs.",
+    "fp_cache_file": "music_fp_cache.json"
+  }
+}
