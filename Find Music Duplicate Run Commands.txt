@@ -1,0 +1,11 @@
+python find_music_duplicates.py                      # normal run
+python find_music_duplicates.py --dry-run            # preview only, nothing moves
+python find_music_duplicates.py --clear-cache        # force re-scan of organized folder (metadata cache)
+python find_music_duplicates.py --clear-fp-cache     # delete fingerprint cache and regenerate on next run
+python find_music_duplicates.py --clear-resume       # discard interrupted run state
+python find_music_duplicates.py --config other.json  # use a different config file
+
+# Combinations
+python find_music_duplicates.py --dry-run --clear-fp-cache        # fresh fingerprints, preview only
+python find_music_duplicates.py --dry-run --clear-cache           # fresh metadata scan, preview only
+python find_music_duplicates.py --clear-cache --clear-fp-cache    # wipe both caches and exit
